@@ -1,36 +1,59 @@
 # AI Resume Analyzer
 
-An AI-powered Resume Analyzer built using Python, Django, and Machine Learning concepts.  
-This project helps analyze resumes, extract skills, and provide feedback to improve resume quality.
+## 📌 About
+AI Resume Analyzer is a Django-based web application that analyzes resumes, calculates an ATS score, identifies missing skills, and provides personalized suggestions to improve resumes.
 
-## 🚀 Features
-
-- Upload resume files
-- Extract resume text
-- Analyze skills and keywords
-- Match resume with job requirements
-- Provide improvement suggestions
-- User-friendly interface
-
-## 🛠️ Tech Stack
-
-### Backend
+## 🚀 Tech Stack
 - Python
 - Django
-- Django REST Framework
-
-### Frontend
-- HTML
-- CSS
+- MySQL
+- HTML5
+- CSS3
 - JavaScript
-- React (planned)
+- Git & GitHub
 
-### Database
-- SQLite
-- MongoDB (planned)
+## ✨ Features (Planned)
+- User Registration & Login
+- Resume Upload (PDF)
+- Resume Text Extraction
+- ATS Score Calculation
+- Skill Gap Analysis
+- Job Match Percentage
+- AI-Based Resume Suggestions
+- Dashboard with Charts
 
-### AI / ML
-- Natural Language Processing (NLP)
-- Resume text analysis
+## 📅 Progress
 
-## 📂 Project Structure
+- ✅ Day 1 – Project Setup
+- ⏳ Day 2 – Authentication
+- ⏳ Day 3 – Resume Upload
+- ⏳ Day 4 – Resume Text Extraction
+- ⏳ Day 5 – Resume Parsing
+- ⏳ Day 6 – Skills Database
+- ⏳ Day 7 – Resume Scoring
+- ⏳ Day 8 – Missing Skills Analysis
+- ⏳ Day 9 – ATS Score
+- ⏳ Day 10 – AI Suggestions
+- ⏳ Day 11 – Dashboard
+- ⏳ Day 12 – Job Matching
+- ⏳ Day 13 – Resume History
+- ⏳ Day 14 – UI Improvements
+- ⏳ Day 15 – Deployment
+
+## 🛠️ Installation
+
+```bash
+git clone <repository-url>
+cd AI-Resume-Analyzer
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+```
+
+## 👩‍💻 Author
+
+**Satti Bhanu Suma Sri**
+
+GitHub: https://github.com/bhanu-developer5161
