@@ -24,21 +24,23 @@ AI Resume Analyzer is a Django-based web application that analyzes resumes, calc
 
 ## 📅 Progress
 
-- ✅ Day 1 – Project Setup
-- ⏳ Day 2 – Authentication
-- ⏳ Day 3 – Resume Upload
-- ⏳ Day 4 – Resume Text Extraction
-- ⏳ Day 5 – Resume Parsing
-- ⏳ Day 6 – Skills Database
-- ⏳ Day 7 – Resume Scoring
-- ⏳ Day 8 – Missing Skills Analysis
-- ⏳ Day 9 – ATS Score
-- ⏳ Day 10 – AI Suggestions
-- ⏳ Day 11 – Dashboard
-- ⏳ Day 12 – Job Matching
-- ⏳ Day 13 – Resume History
-- ⏳ Day 14 – UI Improvements
-- ⏳ Day 15 – Deployment
+- ## Project Progress
+
+✅ Day 1 – Project Setup  
+✅ Day 2 – Resume Upload Backend (Django Model, Admin Setup, Database)  
+⏳ Day 3 – Resume Text Extraction  
+⏳ Day 4 – Resume Parsing  
+⏳ Day 5 – Skills Database  
+⏳ Day 6 – Resume Scoring  
+⏳ Day 7 – Missing Skills Analysis  
+⏳ Day 8 – ATS Score  
+⏳ Day 9 – AI Suggestions  
+⏳ Day 10 – Dashboard  
+⏳ Day 11 – Job Matching  
+⏳ Day 12 – Resume History  
+⏳ Day 13 – UI Improvements  
+⏳ Day 14 – Testing & Optimization  
+⏳ Day 15 – Deployment
 
 ## 🛠️ Installation
 
