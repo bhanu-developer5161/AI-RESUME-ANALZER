@@ -1,40 +1,42 @@
 from django.shortcuts import render
 from .models import Resume
-from .utils import extract_pdf_text, extract_skills
+from .utils import extract_pdf_text, extract_skills, calculate_score
+
 
 def upload_resume(request):
     if request.method == "POST":
-        name = request.POST.get('name', '')
-        email = request.POST.get('email', '')
-        resume_file = request.FILES.get('resume_file')
 
-        if resume_file:
-            # 1. Extract text
-            extracted_text = extract_pdf_text(resume_file)
-            
-            # Reset file pointer so Django saves the file contents properly
-            resume_file.seek(0)
+        name = request.POST["name"]
+        email = request.POST["email"]
+        resume_file = request.FILES["resume_file"]
 
-            # 2. Extract skills
-            skills = extract_skills(extracted_text) or []
+        # Extract text
+        extracted_text = extract_pdf_text(resume_file)
 
-            # Print for debugging in terminal
-            print("RESUME TEXT:", extracted_text)
-            print("FOUND SKILLS:", skills)
+        # Detect skills
+        skills = extract_skills(extracted_text)
 
-            # 3. Format skills properly (handles lists or single strings)
-            if isinstance(skills, list):
-                skills_str = ", ".join(skills)
-            else:
-                skills_str = str(skills)
+        # Calculate score
+        score = calculate_score(skills)
 
-            # 4. Save to database
-            Resume.objects.create(
-                name=name,
-                email=email,
-                resume_file=resume_file,
-                extracted_text=extracted_text,
-                skills=skills_str
-            )
+        # 👇 Add these debug prints here
+        print("Extracted Text:")
+        print(extracted_text)
+
+        print("Detected Skills:")
+        print(skills)
+
+        print("Score:")
+        print(score)
+
+        # Save to database
+        Resume.objects.create(
+            name=name,
+            email=email,
+            resume_file=resume_file,
+            extracted_text=extracted_text,
+            skills=", ".join(skills),
+            score=score,
+        )
 
     return render(request, "upload.html")
