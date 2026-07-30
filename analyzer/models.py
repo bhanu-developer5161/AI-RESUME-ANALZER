@@ -8,6 +8,7 @@ class Resume(models.Model):
     extracted_text = models.TextField(blank=True, null=True)
     skills = models.TextField(blank=True, null=True)
     score = models.IntegerField(default=0)
+    missing_skills = models.TextField(blank=True, null=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
