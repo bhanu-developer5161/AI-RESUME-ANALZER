@@ -1,42 +1,59 @@
 from django.shortcuts import render
 from .models import Resume
-from .utils import extract_pdf_text, extract_skills, calculate_score
+from .utils import (
+    extract_pdf_text,
+    extract_skills,
+    calculate_score,
+    find_missing_skills,
+)
 
 
 def upload_resume(request):
     if request.method == "POST":
 
-        name = request.POST["name"]
-        email = request.POST["email"]
-        resume_file = request.FILES["resume_file"]
+        # Get form data
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        resume_file = request.FILES.get("resume_file")
 
-        # Extract text
+        # Extract text from PDF
         extracted_text = extract_pdf_text(resume_file)
 
         # Detect skills
         skills = extract_skills(extracted_text)
 
-        # Calculate score
-        score = calculate_score(skills)
+        # Find missing skills
+        missing_skills = find_missing_skills(skills)
 
-        # 👇 Add these debug prints here
-        print("Extracted Text:")
-        print(extracted_text)
+        # Calculate ATS Score
+        score = calculate_score(
+            extracted_text,
+            skills,
+            name,
+            email
+        )
 
-        print("Detected Skills:")
-        print(skills)
-
-        print("Score:")
-        print(score)
-
-        # Save to database
+        # Save resume details
         Resume.objects.create(
             name=name,
             email=email,
             resume_file=resume_file,
             extracted_text=extracted_text,
             skills=", ".join(skills),
+            missing_skills=", ".join(missing_skills),
             score=score,
         )
+
+        # Send data to template
+        context = {
+            "success": True,
+            "name": name,
+            "email": email,
+            "skills": skills,
+            "missing_skills": missing_skills,
+            "score": score,
+        }
+
+        return render(request, "upload.html", context)
 
     return render(request, "upload.html")

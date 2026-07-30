@@ -1,36 +1,164 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Resume Analyzer</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f4f4;
+            margin:40px;
+        }
+
+        .container{
+            width:700px;
+            margin:auto;
+            background:white;
+            padding:30px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,0.2);
+        }
+
+        h1{
+            text-align:center;
+            color:#333;
+        }
+
+        label{
+            font-weight:bold;
+        }
+
+        input{
+            width:100%;
+            padding:10px;
+            margin-top:5px;
+            margin-bottom:20px;
+        }
+
+        button{
+            background:green;
+            color:white;
+            padding:12px 20px;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+            width:100%;
+            font-size:16px;
+        }
+
+        button:hover{
+            background:darkgreen;
+        }
+
+        .result{
+            margin-top:30px;
+            padding:20px;
+            border:1px solid #ddd;
+            background:#f9f9f9;
+            border-radius:10px;
+        }
+
+        .result h2{
+            color:green;
+        }
+
+        .score{
+            font-size:24px;
+            color:blue;
+            font-weight:bold;
+        }
+    </style>
+
 </head>
 
 <body>
 
-<h1>Upload Resume</h1>
+<div class="container">
+
+<h1>AI Resume Analyzer</h1>
 
 <form method="POST" enctype="multipart/form-data">
 
 {% csrf_token %}
 
-<input type="text" name="name" placeholder="Enter Name">
+<label>Name</label>
 
-<br><br>
+<input
+type="text"
+name="name"
+required>
 
-<input type="email" name="email" placeholder="Enter Email">
+<label>Email</label>
 
-<br><br>
+<input
+type="email"
+name="email"
+required>
 
-<input type="file" name="resume_file">
+<label>Upload Resume (PDF)</label>
 
-<br><br>
+<input
+type="file"
+name="resume_file"
+accept=".pdf"
+required>
 
 <button type="submit">
-Upload
+Analyze Resume
 </button>
 
 </form>
 
-</body>
 
+{% if success %}
+
+<div class="result">
+
+<h2>Resume Analysis Result</h2>
+
+<p><strong>Name:</strong> {{ name }}</p>
+
+<p><strong>Email:</strong> {{ email }}</p>
+
+<hr>
+
+<h3>Detected Skills</h3>
+
+<ul>
+{% for skill in skills %}
+<li>{{ skill }}</li>
+{% empty %}
+<li>No skills detected.</li>
+{% endfor %}
+</ul>
+
+<hr>
+
+<h3>Missing Skills</h3>
+
+<ul>
+{% for skill in missing_skills %}
+<li>{{ skill }}</li>
+{% empty %}
+<li>No missing skills.</li>
+{% endfor %}
+</ul>
+
+<hr>
+
+<h3>ATS Resume Score</h3>
+
+<p class="score">
+{{ score }}/100
+</p>
+
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
 </html>
