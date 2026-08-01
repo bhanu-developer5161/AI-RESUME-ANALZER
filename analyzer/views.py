@@ -5,6 +5,7 @@ from .utils import (
     extract_skills,
     calculate_score,
     find_missing_skills,
+    generate_ai_suggestions,
 )
 
 
@@ -33,6 +34,12 @@ def upload_resume(request):
             email
         )
 
+        # Generate AI suggestions
+        ai_suggestions = generate_ai_suggestions(
+           score,
+           missing_skills
+        )
+
         # Save resume details
         Resume.objects.create(
             name=name,
@@ -52,6 +59,7 @@ def upload_resume(request):
             "skills": skills,
             "missing_skills": missing_skills,
             "score": score,
+            "ai_suggestions": ai_suggestions,
         }
 
         return render(request, "upload.html", context)

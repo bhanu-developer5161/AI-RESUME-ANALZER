@@ -88,3 +88,44 @@ def find_missing_skills(found_skills):
             missing.append(skill)
 
     return missing
+
+def generate_ai_suggestions(score, missing_skills):
+    """
+    Generate AI suggestions based on ATS score and missing skills.
+    """
+
+    suggestions = []
+
+    if score < 60:
+        suggestions.append(
+            "Improve your resume by adding more technical skills and projects."
+        )
+
+    elif score < 80:
+        suggestions.append(
+            "Your resume is good, but adding more relevant skills can improve your ATS score."
+        )
+
+    else:
+        suggestions.append(
+            "Excellent resume! Continue updating your latest projects and achievements."
+        )
+
+    if missing_skills:
+        suggestions.append(
+            "Recommended skills to learn: " + ", ".join(missing_skills)
+        )
+
+    suggestions.append(
+        "Include GitHub project links."
+    )
+
+    suggestions.append(
+        "Keep your resume limited to 1-2 pages."
+    )
+
+    suggestions.append(
+        "Add measurable project achievements where possible."
+    )
+
+    return suggestions

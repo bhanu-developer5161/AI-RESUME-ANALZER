@@ -154,6 +154,16 @@ Analyze Resume
 {{ score }}/100
 </p>
 
+<hr>
+
+<h3>AI Suggestions</h3>
+
+<ul>
+{% for suggestion in ai_suggestions %}
+    <li>{{ suggestion }}</li>
+{% endfor %}
+</ul>
+
 </div>
 
 {% endif %}
