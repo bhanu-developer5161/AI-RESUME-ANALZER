@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Resume Dashboard</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    background:#f4f4f4;
+    margin:40px;
+}
+
+.container{
+    width:900px;
+    margin:auto;
+}
+
+.card{
+
+background:white;
+
+padding:20px;
+
+margin-bottom:20px;
+
+border-radius:10px;
+
+box-shadow:0 0 10px gray;
+
+}
+
+h1{
+
+text-align:center;
+
+}
+
+.score{
+
+font-size:45px;
+
+color:green;
+
+font-weight:bold;
+
+}
+
+ul{
+
+line-height:30px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>AI Resume Dashboard</h1>
+
+<div class="card">
+
+<h2>Candidate Details</h2>
+
+<p><b>Name:</b> {{ resume.name }}</p>
+
+<p><b>Email:</b> {{ resume.email }}</p>
+
+</div>
+
+<div class="card">
+
+<h2>ATS Score</h2>
+
+<div class="score">
+
+{{ resume.score }}/100
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Detected Skills</h2>
+
+<p>{{ resume.skills }}</p>
+
+</div>
+
+<div class="card">
+
+<h2>Missing Skills</h2>
+
+<p>{{ resume.missing_skills }}</p>
+
+</div>
+
+<div class="card">
+
+<h2>AI Suggestions</h2>
+
+<ul>
+
+{% for suggestion in ai_suggestions %}
+
+<li>{{ suggestion }}</li>
+
+{% endfor %}
+
+</ul>
+
+<hr>
+
+<h2>Job Matching</h2>
+
+<h3>Target Role</h3>
+
+<p><b>Python Full Stack Developer</b></p>
+
+<h3>Match Percentage</h3>
+
+<h2>{{ job_percentage }}%</h2>
+
+<h3>Matched Skills</h3>
+
+<ul>
+{% for skill in matched %}
+    <li>{{ skill }}</li>
+{% endfor %}
+</ul>
+
+<h3>Missing Job Skills</h3>
+
+<ul>
+{% for skill in job_missing %}
+    <li>{{ skill }}</li>
+{% endfor %}
+</ul>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

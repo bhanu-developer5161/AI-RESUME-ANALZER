@@ -1,11 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
+
 from .models import Resume
+
 from .utils import (
     extract_pdf_text,
     extract_skills,
     calculate_score,
     find_missing_skills,
     generate_ai_suggestions,
+    JOB_SKILLS,
+    calculate_job_match,
 )
 
 
@@ -31,17 +35,17 @@ def upload_resume(request):
             extracted_text,
             skills,
             name,
-            email
+            email,
         )
 
-        # Generate AI suggestions
+        # Generate AI Suggestions
         ai_suggestions = generate_ai_suggestions(
-           score,
-           missing_skills
+            score,
+            missing_skills,
         )
 
-        # Save resume details
-        Resume.objects.create(
+        # Save Resume
+        resume = Resume.objects.create(
             name=name,
             email=email,
             resume_file=resume_file,
@@ -51,17 +55,36 @@ def upload_resume(request):
             score=score,
         )
 
-        # Send data to template
-        context = {
-            "success": True,
-            "name": name,
-            "email": email,
-            "skills": skills,
-            "missing_skills": missing_skills,
-            "score": score,
-            "ai_suggestions": ai_suggestions,
-        }
-
-        return render(request, "upload.html", context)
+        # Redirect to Dashboard
+        return redirect("dashboard", resume.id)
 
     return render(request, "upload.html")
+
+
+def dashboard(request, resume_id):
+
+    resume = get_object_or_404(
+        Resume,
+        id=resume_id
+    )
+
+    ai_suggestions = generate_ai_suggestions(
+        resume.score,
+        resume.missing_skills.split(", ")
+        if resume.missing_skills else []
+    )
+
+    matched, job_missing, job_percentage = calculate_job_match(
+        resume.skills.split(", "),
+        JOB_SKILLS,
+    )
+
+    context = {
+        "resume": resume,
+        "ai_suggestions": ai_suggestions,
+        "matched": matched,
+        "job_missing": job_missing,
+        "job_percentage": job_percentage,
+    }
+
+    return render(request, "dashboard.html", context)

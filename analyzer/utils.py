@@ -1,6 +1,20 @@
 import PyPDF2
 from .skills import SKILLS
 
+# ============================
+# Job Required Skills
+# ============================
+
+JOB_SKILLS = [
+    "Python",
+    "Django",
+    "React",
+    "SQL",
+    "Git",
+    "Docker",
+    "REST API",
+]
+
 
 def extract_pdf_text(file):
     """
@@ -129,3 +143,24 @@ def generate_ai_suggestions(score, missing_skills):
     )
 
     return suggestions
+
+def calculate_job_match(candidate_skills, required_skills):
+    """
+    Compare candidate skills with required skills.
+    """
+
+    matched = []
+
+    missing = []
+
+    for skill in required_skills:
+        if skill in candidate_skills:
+            matched.append(skill)
+        else:
+            missing.append(skill)
+
+    percentage = int(
+        (len(matched) / len(required_skills)) * 100
+    )
+
+    return matched, missing, percentage
