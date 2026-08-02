@@ -88,3 +88,17 @@ def dashboard(request, resume_id):
     }
 
     return render(request, "dashboard.html", context)
+
+def resume_history(request):
+
+    resumes = Resume.objects.all().order_by("-id")
+
+    context = {
+        "resumes": resumes
+    }
+
+    return render(
+        request,
+        "history.html",
+        context
+    )

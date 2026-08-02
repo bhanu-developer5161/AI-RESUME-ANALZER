@@ -4,4 +4,9 @@ from . import views
 urlpatterns = [
     path('', views.upload_resume, name="upload_resume"),
     path('dashboard/<int:resume_id>/', views.dashboard, name="dashboard"),
+    path(
+    "history/",
+    views.resume_history,
+    name="resume_history"
+),
 ]

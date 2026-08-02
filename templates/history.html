@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume History</title>
+</head>
+<body>
+
+<h1>Resume History</h1>
+
+<table border="1" cellpadding="10">
+
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>ATS Score</th>
+    <th>Uploaded On</th>
+    <th>Action</th>
+</tr>
+
+{% for resume in resumes %}
+
+<tr>
+
+<td>{{ resume.id }}</td>
+
+<td>{{ resume.name }}</td>
+
+<td>{{ resume.email }}</td>
+
+<td>{{ resume.score }}/100</td>
+
+<td>{{ resume.uploaded_at }}</td>
+
+<td>
+
+<a href="{% url 'dashboard' resume.id %}">
+
+View Dashboard
+
+</a>
+
+</td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+
+<td colspan="6">
+
+No resumes uploaded yet.
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="/">⬅ Upload New Resume</a>
+
+</body>
+</html>
