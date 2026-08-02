@@ -79,8 +79,17 @@ def dashboard(request, resume_id):
         JOB_SKILLS,
     )
 
+    skills = resume.skills.split(", ") if resume.skills else []
+
+    missing_skills = (
+    resume.missing_skills.split(", ")
+    if resume.missing_skills
+    else []
+)
     context = {
         "resume": resume,
+        "skills": skills,
+        "missing_skills": missing_skills,
         "ai_suggestions": ai_suggestions,
         "matched": matched,
         "job_missing": job_missing,
