@@ -1,0 +1,100 @@
+<h2>Resume History</h2>
+
+
+{% for resume in resumes %}
+
+<p>
+Resume: {{resume.file.name}}
+</p>
+
+<p>
+Score: {{resume.score}}
+</p>
+
+<p>
+Uploaded:
+{{resume.uploaded_at}}
+</p>
+
+<hr>
+
+{% empty %}
+
+<p>No resume history found</p>
+
+{% endfor %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Resume History
+    </title>
+</head>
+
+
+<body>
+
+
+<h1>
+Your Resume History
+</h1>
+
+
+<a href="{% url 'dashboard' %}">
+Back to Dashboard
+</a>
+
+
+<hr>
+
+
+{% for resume in resumes %}
+
+
+<h3>
+{{ resume.name }}
+</h3>
+
+
+<p>
+Email:
+{{ resume.email }}
+</p>
+
+
+<p>
+ATS Score:
+{{ resume.score }}/100
+</p>
+
+
+<p>
+Skills:
+{{ resume.skills }}
+</p>
+
+
+<p>
+Uploaded Date:
+{{ resume.uploaded_at }}
+</p>
+
+
+<hr>
+
+
+{% empty %}
+
+<p>
+No resume history found.
+</p>
+
+
+{% endfor %}
+
+
+</body>
+
+</html>

@@ -1,292 +1,419 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AI Resume Dashboard</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-          rel="stylesheet">
+<title>
+AI Resume Analyzer Dashboard
+</title>
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+rel="stylesheet">
+
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 
 </head>
 
+
 <body class="bg-light">
 
-<!-- NAVBAR -->
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-    <div class="container">
+<!-- Navbar -->
 
-        <a class="navbar-brand fw-bold" href="/">
-            AI Resume Analyzer
-        </a>
+<nav class="navbar navbar-dark bg-dark">
 
-        <div>
+<div class="container">
 
-            <a href="/" class="btn btn-outline-light me-2">
-                Upload Resume
-            </a>
 
-            <a href="/history/" class="btn btn-outline-light">
-                Resume History
-            </a>
+<a class="navbar-brand fw-bold"
+href="{% url 'dashboard' %}">
 
-        </div>
+AI Resume Analyzer
 
-    </div>
+</a>
 
-</nav>
 
-<div class="container mt-5">
 
-    <!-- Candidate -->
+<div>
 
-    <div class="card shadow mb-4">
 
-        <div class="card-header bg-primary text-white">
+<span class="text-white me-3">
 
-            <h3>Candidate Details</h3>
+Welcome,
+{{ request.user.username }}
 
-        </div>
+</span>
 
-        <div class="card-body">
 
-            <p><strong>Name :</strong> {{ resume.name }}</p>
 
-            <p><strong>Email :</strong> {{ resume.email }}</p>
+<a href="{% url 'upload_resume' %}"
+class="btn btn-success me-2">
 
-        </div>
+Upload Resume
 
-    </div>
+</a>
 
-    <!-- ATS -->
 
-    <div class="card shadow mb-4">
 
-        <div class="card-header bg-success text-white">
 
-            <h3>ATS Score</h3>
+<a href="{% url 'resume_history' %}"
+class="btn btn-primary me-2">
 
-        </div>
+Resume History
 
-        <div class="card-body text-center">
+</a>
 
-            <h1 class="display-3 text-success">
 
-                {{ resume.score }}/100
 
-            </h1>
 
-        </div>
+<a href="{% url 'logout' %}"
+class="btn btn-danger">
 
-    </div>
+Logout
 
-    <!-- Skills -->
+</a>
 
-    <div class="card shadow mb-4">
 
-        <div class="card-header bg-info text-white">
-
-            <h3>Detected Skills</h3>
-
-        </div>
-
-        <div class="card-body">
-
-            {% for skill in skills %}
-
-                <span class="badge bg-primary m-1">
-
-                    {{ skill }}
-
-                </span>
-
-            {% empty %}
-
-                <p>No skills detected.</p>
-
-            {% endfor %}
-
-        </div>
-
-    </div>
-
-    <!-- Missing -->
-
-    <div class="card shadow mb-4">
-
-        <div class="card-header bg-danger text-white">
-
-            <h3>Missing Skills</h3>
-
-        </div>
-
-        <div class="card-body">
-
-            {% for skill in missing_skills %}
-
-                <span class="badge bg-danger m-1">
-
-                    {{ skill }}
-
-                </span>
-
-            {% empty %}
-
-                <span class="badge bg-success">
-
-                    No Missing Skills
-
-                </span>
-
-            {% endfor %}
-
-        </div>
-
-    </div>
-
-    <!-- AI -->
-
-    <div class="card shadow mb-4">
-
-        <div class="card-header bg-warning">
-
-            <h3>AI Suggestions</h3>
-
-        </div>
-
-        <div class="card-body">
-
-            <ul class="list-group">
-
-                {% for suggestion in ai_suggestions %}
-
-                    <li class="list-group-item">
-
-                        {{ suggestion }}
-
-                    </li>
-
-                {% endfor %}
-
-            </ul>
-
-        </div>
-
-    </div>
-
-    <!-- Job -->
-
-    <div class="card shadow mb-4">
-
-        <div class="card-header bg-secondary text-white">
-
-            <h3>Job Matching</h3>
-
-        </div>
-
-        <div class="card-body">
-
-            <h4>
-
-                Target Role :
-                <span class="text-primary">
-
-                    Python Full Stack Developer
-
-                </span>
-
-            </h4>
-
-            <hr>
-
-            <h2 class="text-success">
-
-                Match Percentage :
-                {{ job_percentage }}%
-
-            </h2>
-
-            <hr>
-
-            <h4>Matched Skills</h4>
-
-            {% for skill in matched %}
-
-                <span class="badge bg-success m-1">
-
-                    {{ skill }}
-
-                </span>
-
-            {% empty %}
-
-                <p>No matched skills.</p>
-
-            {% endfor %}
-
-            <hr>
-
-            <h4>Missing Job Skills</h4>
-
-            {% for skill in job_missing %}
-
-                <span class="badge bg-danger m-1">
-
-                    {{ skill }}
-
-                </span>
-
-            {% empty %}
-
-                <p>No missing job skills.</p>
-
-            {% endfor %}
-
-        </div>
-
-    </div>
-
-    <!-- Buttons -->
-
-    <div class="text-center mb-5">
-
-        <a href="/" class="btn btn-success btn-lg me-3">
-
-            Upload Another Resume
-
-        </a>
-
-        <a href="/history/" class="btn btn-primary btn-lg">
-
-            Resume History
-
-        </a>
-
-    </div>
 
 </div>
 
-<footer class="bg-dark text-white text-center p-3">
 
-    <h5>
 
-        AI Resume Analyzer © 2026
+</div>
 
-    </h5>
+</nav>
 
-    <p>
 
-        Developed by <strong>Satti Bhanu Suma Sri</strong>
 
-    </p>
+
+
+
+<div class="container mt-5">
+
+
+
+<h2 class="text-center mb-4">
+
+Your Resume Analysis
+
+</h2>
+
+
+
+
+
+{% if resumes %}
+
+
+
+<div class="row">
+
+
+
+{% for resume in resumes %}
+
+
+
+<div class="col-md-6 mb-4">
+
+
+
+<div class="card shadow h-100">
+
+
+
+<div class="card-header bg-primary text-white">
+
+
+<h4>
+
+{{ resume.name }}
+
+</h4>
+
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+<p>
+
+<strong>Email:</strong>
+
+{{ resume.email }}
+
+</p>
+
+
+
+
+
+<p>
+
+<strong>Resume:</strong>
+
+
+<a href="{{ resume.resume_file.url }}"
+target="_blank">
+
+View PDF
+
+</a>
+
+
+</p>
+
+
+
+
+
+<p>
+
+<strong>Uploaded:</strong>
+
+{{ resume.uploaded_at }}
+
+</p>
+
+
+
+
+
+<hr>
+
+
+
+
+
+<h5>
+
+ATS Score
+
+</h5>
+
+
+
+
+<div class="progress mb-3">
+
+
+<div class="progress-bar bg-success"
+
+style="width: {{ resume.score }}%">
+
+
+{{ resume.score }}%
+
+
+</div>
+
+
+</div>
+
+
+
+
+<h3 class="text-center text-success">
+
+{{ resume.score }}/100
+
+</h3>
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+<h5>
+
+Detected Skills
+
+</h5>
+
+
+
+{% if resume.skills %}
+
+
+
+{% for skill in resume.skills.split %}
+
+
+
+<span class="badge bg-info m-1">
+
+{{ skill }}
+
+</span>
+
+
+
+{% endfor %}
+
+
+
+{% else %}
+
+
+
+<p>
+
+No skills detected.
+
+</p>
+
+
+
+{% endif %}
+
+
+
+
+
+<hr>
+
+
+
+
+
+<a href="{% url 'resume_analysis' resume.id %}"
+class="btn btn-primary me-2">
+
+View Complete Analysis
+
+</a>
+
+
+<a href="{% url 'delete_resume' resume.id %}"
+class="btn btn-danger"
+onclick="return confirm('Are you sure you want to delete this resume?');">
+
+Delete Resume
+
+</a>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+{% endfor %}
+
+
+
+</div>
+
+
+
+{% else %}
+
+
+
+
+<div class="alert alert-warning text-center">
+
+
+<h4>
+
+No Resume Uploaded Yet
+
+</h4>
+
+
+
+<a href="{% url 'upload_resume' %}"
+
+class="btn btn-success mt-3">
+
+
+Upload Resume
+
+
+</a>
+
+
+</div>
+
+
+
+
+{% endif %}
+
+
+
+</div>
+
+
+
+
+
+
+
+<footer class="bg-dark text-white text-center p-3 mt-5">
+
+
+<h5>
+
+AI Resume Analyzer © 2026
+
+</h5>
+
+
+<p>
+
+Developed by
+
+<strong>
+Satti Bhanu Suma Sri
+</strong>
+
+</p>
+
 
 </footer>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+
+</script>
+
+
 
 </body>
 

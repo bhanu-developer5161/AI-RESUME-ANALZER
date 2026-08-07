@@ -164,3 +164,21 @@ def calculate_job_match(candidate_skills, required_skills):
     )
 
     return matched, missing, percentage
+
+import PyPDF2
+
+
+def extract_text_from_pdf(pdf_path):
+
+    text = ""
+
+    with open(pdf_path, "rb") as file:
+
+        reader = PyPDF2.PdfReader(file)
+
+        for page in reader.pages:
+
+            text += page.extract_text() or ""
+
+
+    return text
