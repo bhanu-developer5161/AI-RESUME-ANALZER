@@ -2,7 +2,9 @@
 
 ## 📌 About
 
-AI Resume Analyzer is a Django-based web application that analyzes resumes, calculates an ATS score, identifies skill gaps, matches resumes with job requirements, and provides suggestions to improve resume quality.
+AI Resume Analyzer is a Django-based web application that analyzes resumes, calculates an ATS score, detects technical skills, identifies missing skills, matches resumes with job requirements, and provides AI-powered suggestions to improve resume quality.
+
+---
 
 ## 🚀 Tech Stack
 
@@ -12,44 +14,68 @@ AI Resume Analyzer is a Django-based web application that analyzes resumes, calc
 * HTML5
 * CSS3
 * JavaScript
-* Bootstrap
+* Bootstrap 5
 * Git & GitHub
+
+---
 
 ## ✨ Features
 
-✅ User Registration & Login
-✅ User Authentication
-✅ Resume Upload (PDF)
-✅ Resume Text Extraction
-✅ Resume Skill Detection
-✅ ATS Score Calculation
-✅ Missing Skills Analysis
-✅ AI-Based Resume Suggestions
-✅ Job Match Percentage
-✅ Resume Dashboard
-✅ Resume History
-✅ Professional UI Design
-✅ Resume Analysis Details Page
+* 👤 User Registration & Login
+* 🔒 User Authentication
+* 📄 Resume Upload (PDF)
+* 📑 PDF Text Extraction
+* 💻 Technical Skill Detection
+* 📊 ATS Score Calculation
+* 🧠 Missing Skills Analysis
+* 🤖 AI Resume Suggestions
+* 🎯 Job Match Percentage
+* 📋 Resume Dashboard
+* 📚 Resume History
+* 📂 Resume Analysis Details
+* 🗑️ Delete Resume
+* 🎨 Professional Responsive UI
+
+---
 
 ## 📅 Project Progress
 
-| Day    | Feature                                                             | Status      |
-| ------ | ------------------------------------------------------------------- | ----------- |
-| Day 1  | Project Setup                                                       | ✅ Completed |
-| Day 2  | Resume Upload Backend (Django Model, Admin Setup, Database)         | ✅ Completed |
-| Day 3  | Resume Text Extraction (PDF Processing)                             | ✅ Completed |
-| Day 4  | Resume Parsing                                                      | ✅ Completed |
-| Day 5  | Resume Scoring System                                               | ✅ Completed |
-| Day 6  | Missing Skills Analysis                                             | ✅ Completed |
-| Day 7  | ATS Score Calculation                                               | ✅ Completed |
-| Day 8  | AI Resume Suggestions                                               | ✅ Completed |
-| Day 9  | Resume Analysis Dashboard                                           | ✅ Completed |
-| Day 10 | Job Matching System                                                 | ✅ Completed |
-| Day 11 | Resume History                                                      | ✅ Completed |
-| Day 12 | Professional UI Improvements                                        | ✅ Completed |
-| Day 13 | User Authentication + Dashboard Improvements + Resume Analysis Page | ✅ Completed |
-| Day 14 | Testing & Optimization                                              | ⏳ Pending   |
-| Day 15 | Deployment                                                          | ⏳ Pending   |
+| Day    | Feature                                               | Status      |
+| ------ | ----------------------------------------------------- | ----------- |
+| Day 1  | Project Setup                                         | ✅ Completed |
+| Day 2  | Resume Upload Backend                                 | ✅ Completed |
+| Day 3  | PDF Text Extraction                                   | ✅ Completed |
+| Day 4  | Resume Parsing                                        | ✅ Completed |
+| Day 5  | ATS Score Calculation                                 | ✅ Completed |
+| Day 6  | Missing Skills Analysis                               | ✅ Completed |
+| Day 7  | Resume Scoring Improvements                           | ✅ Completed |
+| Day 8  | AI Resume Suggestions                                 | ✅ Completed |
+| Day 9  | Resume Analysis Dashboard                             | ✅ Completed |
+| Day 10 | Job Matching System                                   | ✅ Completed |
+| Day 11 | Resume History                                        | ✅ Completed |
+| Day 12 | Professional UI Improvements                          | ✅ Completed |
+| Day 13 | User Authentication, Dashboard & Resume Analysis Page | ✅ Completed |
+| Day 14 | Testing, Resume Management & Optimization             | ✅ Completed |
+| Day 15 | Deployment                                            | ⏳ Pending   |
+
+---
+
+## 📂 Project Structure
+
+```text
+AI-Resume-Analzer/
+│── analyzer/
+│── accounts/
+│── config/
+│── templates/
+│── static/
+│── media/
+│── requirements.txt
+│── manage.py
+│── README.md
+```
+
+---
 
 ## 🛠️ Installation
 
@@ -69,49 +95,61 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-## 📂 Project Features Completed
+---
+
+## 🖥️ Completed Modules
 
 ### Authentication
 
 * User Registration
-* Login System
-* Logout Functionality
+* Login
+* Logout
 
-### Resume Analysis
+### Resume Processing
 
-* Upload Resume PDF
-* Extract Resume Content
+* Upload Resume (PDF)
+* Extract Resume Text
 * Detect Technical Skills
 * Calculate ATS Score
-* Find Missing Skills
-* Generate Resume Improvement Suggestions
+* Missing Skills Detection
+* AI Resume Suggestions
 
 ### Dashboard
 
 * View Uploaded Resumes
-* Display ATS Score
-* Display Detected Skills
+* Resume Cards
+* ATS Score Display
+* Skill Display
+* Resume Analysis Page
+
+### Resume History
+
+* View All Uploaded Resumes
+* Open Resume PDF
 * Resume Analysis Details
+* Delete Resume
 
 ### Job Matching
 
-* Compare Resume Skills with Required Job Skills
-* Calculate Match Percentage
-* Show Missing Job Skills
+* Match Resume Skills
+* Match Percentage
+* Missing Job Skills
+
+---
+
+## 📌 Current Status
+
+**Progress:** **14 / 15 Days Completed**
+
+### Remaining Task
+
+* 🚀 Day 15 – Deploy the application and publish the live project.
+
+---
 
 ## 👩‍💻 Author
 
 **Satti Bhanu Suma Sri**
 
-GitHub:
-https://github.com/bhanu-developer5161
-
-## 📊 Current Project Status
-
-Completed: **13/15 Days**
-
-Remaining:
-
-* Day 14: Testing & Optimization
-
-* Day 15: Deployment
+* GitHub: https://github.com/bhanu-developer5161
+* AI Resume Analyzer Project: https://github.com/bhanu-developer5161/AI-RESUME-ANALZER
