@@ -360,3 +360,20 @@ def delete_resume(request, resume_id):
     return redirect(
         "dashboard"
     )
+
+@login_required
+def delete_resume(request, resume_id):
+    resume = get_object_or_404(
+        Resume,
+        id=resume_id,
+        email=request.user.email
+    )
+
+    if resume.resume_file:
+        resume.resume_file.delete(save=False)
+
+    resume.delete()
+
+    messages.success(request, "Resume deleted successfully.")
+
+    return redirect("resume_history")
