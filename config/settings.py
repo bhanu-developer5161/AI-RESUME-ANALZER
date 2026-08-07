@@ -25,9 +25,10 @@ SECRET_KEY = 'django-insecure-_c+59i@j@o-mnlcskx6cfumy3of&w2np(1h#_!ipvuz7opx_(z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [    
+ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
+    "ai-resume-analzer.onrender.com",
 ]
 
 
@@ -137,3 +138,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+USE_X_FORWARDED_HOST = True
